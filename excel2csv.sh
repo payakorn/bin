@@ -12,9 +12,7 @@ FILE_NAME=$1                                         # Second argument: Name of 
 
 # Extract repository name from REPO_URL
 REPO_DIR=$(basename "$REPO_URL" .git)
-
 CURRENT_DIR=$(pwd)
-echo "CURRENT_DIR: $CURRENT_DIR"
 
 # Check if the repository is already cloned
 echo "Checking if $REPO_DIR is cloned..."
@@ -50,15 +48,6 @@ fi
 # Extract the directory and base name of the file
 FILE_DIR=$(dirname "$FILE_NAME")
 FILE_BASE_NAME=$(basename "$FILE_NAME")
-
-echo "FILE_DIR: $FILE_DIR"
-
-# Change to the directory where the file is located
-# cd $CURRENT_DIR/$FILE_DIR || { echo "Could not change to directory $FILE_DIR"; exit 1; }
-
-# Assuming the repository is cloned in the home directory
-# # Navigate into the repository directory
-# cd ~/"$REPO_DIR" || { echo "Could not change to repository directory $REPO_DIR"; exit 1; }
 
 # Run the Python script with the full path to the file
 python ~/$REPO_DIR/convertExcelToCsv.py "$CURRENT_DIR/$FILE_DIR/$FILE_BASE_NAME"
