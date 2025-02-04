@@ -35,13 +35,13 @@ fi
 if conda env list | grep -w "$REPO_DIR"; then
     echo "Environment '$REPO_DIR' exists."
     conda init
-    source ~/.zshrc # For zsh users
+    source ~/.zshrc || source ~/.bashrc 
     conda activate $REPO_DIR
 else
     echo "Environment '$REPO_DIR' does not exist."
     cd ~/$REPO_DIR || exit
     conda env create -f environment.yml
-    source ~/.zshrc # For zsh users
+    source ~/.zshrc || source ~/.bashrc 
     conda init
     conda activate $REPO_DIR
 fi
